@@ -1,44 +1,63 @@
-# GA4 Multi-Ecosystem Report Automation
+# GA4 Ecosystem Report — Automated Monthly Analytics
 
-A Python script that connects to the Google Analytics 4 API and automatically generates a full monthly analytics report across multiple website ecosystems — outputting a self-contained HTML dashboard and an Excel file, ready to share.
+No more manual exports. This script connects to the GA4 API and generates a full 
+monthly report across multiple website ecosystems in one run.
 
-## The problem it solves
-Manually exporting Looker Studio reports across 8 separate website ecosystems every month was taking hours. This script pulls everything automatically in seconds.
+Output: a self-contained HTML dashboard + Excel file, ready to share with anyone.
 
-## What it generates
-- **HTML report** — visual dashboard with charts, KPI cards, and tables
-- **Excel file** — 4 sheets: Ecosystem Summary, Channels, Source/Medium, Top Pages
-- Month-over-month comparison built in
-- Ecosystem filtering by hostname (maps directly to GA4 audience structure)
+---
+
+## Preview
+
+![Report Overview](report-preview.png)
+![Ecosystem Breakdown](report-preview%202.png)
+![Source & Channels](report-preview%203.png)
+
+---
+
+## What you get
+
+- KPI cards with month-over-month deltas
+- Daily active users trend chart
+- Sessions breakdown by ecosystem
+- Channel group analysis
+- Source / medium table
+- Top 5 pages per ecosystem
+- Everything in one HTML file + Excel with 4 sheets
+
+---
 
 ## Stack
+
 Python · GA4 Data API · Pandas · Matplotlib · Jinja2 · OpenPyXL · Google Cloud
+
+---
 
 ## Setup
 
-### 1. Install dependencies
+**Install dependencies**
+```bash
 pip3 install google-analytics-data google-auth pandas openpyxl matplotlib jinja2 python-dateutil
+```
 
-### 2. Google Cloud setup
-- Enable the **Google Analytics Data API** in Google Cloud Console
-- Create a **Service Account** → download the JSON key
-- In GA4: Admin → Property Access Management → add service account email as **Viewer**
+**Google Cloud**
+- Enable the Google Analytics Data API
+- Create a Service Account → download the JSON key
+- In GA4 → Admin → Property Access Management → add the service account email as Viewer
 
-### 3. Configure the script
-Fill in the CONFIG block at the top of `ga4_monthly_report.py`:
+**Configure**
 ```python
 CONFIG = {
     "property_id": "YOUR_GA4_PROPERTY_ID",
     "credentials_path": "service_account.json",
     "output_dir": ".",
-    "report_month": None,  # auto-uses last month, or set "2026-02"
+    "report_month": None,  # leave as None to auto-use last month
 }
 ```
 
-### 4. Run
+**Run**
 ```bash
 python3 ga4_monthly_report.py
 ```
 
-## Note
-Never commit your `service_account.json` to GitHub. Add it to `.gitignore`.
+---
