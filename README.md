@@ -9,9 +9,9 @@ Output: a self-contained HTML dashboard + Excel file, ready to share with anyone
 
 ## Preview
 
-![Report Overview](report-preview.png)
-![Ecosystem Breakdown](report-preview%202.png)
 ![Source & Channels](report-preview%203.png)
+![Ecosystem Breakdown](report-preview%202.png)
+![Report Overview](report-preview.png)
 
 ---
 
